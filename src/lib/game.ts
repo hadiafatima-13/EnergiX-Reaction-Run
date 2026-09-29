@@ -1,0 +1,15 @@
+export type Stage = 0|1|2|3;
+export type Node = { id: string; x: number; z: number; kind: 'collect'|'station'; label: string; color: string; amount?: number };
+export const STAGES = [
+ {name:'Energy Labyrinth', tag:'01 / SYSTEM & SURROUNDINGS', color:'#48d9d1', intro:'The glass chamber is the chemical system. Everything outside it is the surroundings. Collect heat sparks and route them across the boundary.', goal:'Collect 3 heat sparks, then activate both chambers.'},
+ {name:'Bond Forge', tag:'02 / BONDS & ENTHALPY', color:'#ffb86b', intro:'Breaking bonds takes energy. Making bonds gives energy back. Work the forge to see their difference.', goal:'Collect energy, break both reactant bonds, then make both product bonds.'},
+ {name:'Activation Gate', tag:'03 / REACTION PATHWAYS', color:'#ba98ff', intro:'A reaction needs enough energy to reach its activation barrier. Explore the tall route or open the catalyst tunnel.', goal:'Collect enough energy and cross a reaction pathway.'},
+ {name:'Living Cell', tag:'04 / BIOLOGICAL ENERGY', color:'#92e6a7', intro:'Respiration releases energy for cells. Oxygen allows aerobic respiration; anaerobic respiration works without oxygen and releases less energy.', goal:'Power both respiration stations and save surplus in a lipid reserve.'}
+] as const;
+export const NODES: Node[][] = [
+ [ {id:'a1',x:-2,z:8,kind:'collect',label:'heat',color:'#ffce71',amount:1},{id:'a2',x:1.8,z:15,kind:'collect',label:'heat',color:'#ffce71',amount:1},{id:'a3',x:0,z:22,kind:'collect',label:'heat',color:'#ffce71',amount:1},{id:'exo',x:-2,z:34,kind:'station',label:'EXOTHERMIC',color:'#ffad62'},{id:'endo',x:2,z:51,kind:'station',label:'ENDOTHERMIC',color:'#68d9ff'} ],
+ [ {id:'b1',x:-2,z:9,kind:'collect',label:'energy',color:'#ffca70',amount:3},{id:'b2',x:2,z:18,kind:'collect',label:'energy',color:'#ffca70',amount:3},{id:'break1',x:-1.8,z:29,kind:'station',label:'BREAK • 436',color:'#ff8c72'},{id:'break2',x:1.8,z:40,kind:'station',label:'BREAK • 243',color:'#ff8c72'},{id:'make1',x:-1.8,z:52,kind:'station',label:'MAKE • 431',color:'#79e4b8'},{id:'make2',x:1.8,z:63,kind:'station',label:'MAKE • 431',color:'#79e4b8'} ],
+ [ {id:'c1',x:-2,z:8,kind:'collect',label:'energy',color:'#d1abff',amount:2},{id:'c2',x:2,z:17,kind:'collect',label:'energy',color:'#d1abff',amount:2},{id:'c3',x:0,z:25,kind:'collect',label:'energy',color:'#d1abff',amount:2},{id:'catalyst',x:-2,z:36,kind:'station',label:'CATALYST',color:'#60edd9'},{id:'high',x:2,z:53,kind:'station',label:'HIGH BARRIER • 6',color:'#ed8cbb'},{id:'low',x:-2,z:53,kind:'station',label:'LOW BARRIER • 2',color:'#60edd9'} ],
+ [ {id:'d1',x:-2,z:8,kind:'collect',label:'glucose',color:'#ffcf82',amount:1},{id:'d2',x:2,z:16,kind:'collect',label:'glucose',color:'#ffcf82',amount:1},{id:'oxygen',x:0,z:25,kind:'collect',label:'oxygen',color:'#83d9ff',amount:1},{id:'aerobic',x:2,z:37,kind:'station',label:'AEROBIC',color:'#7ce6d0'},{id:'anaerobic',x:-2,z:51,kind:'station',label:'ANAEROBIC',color:'#e5a8ff'},{id:'lipid',x:0,z:65,kind:'station',label:'LIPID RESERVE',color:'#ffcf84'} ]
+];
+export const STAGE_END = [62,76,66,78];
